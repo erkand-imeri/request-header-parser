@@ -5,12 +5,12 @@ app.get('/',function(req,res){
 
 var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 var isWin = /^win/.test(process.platform);
-
+var lang=req.headers['accept-language'].split(',')[0];
 
 
 res.json({
     ipaddress: ip,
-    software: isWin
+    software: lang
 });
 });
 

@@ -1,16 +1,21 @@
 var express=require('express');
 var app=express();
+var useragent=require('useragent'); 
 
 app.get('/',function(req,res){
+  var agent = useragent.parse(req.headers['user-agent']);
+
 
 var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-var isWin = /^win/.test(process.platform);
 var lang=req.headers['accept-language'].split(',')[0];
 
 
 res.json({
     ipaddress: ip,
-    software: lang
+    language: lang,
+    software: agent.os.family
+   
+    
 });
 });
 

@@ -1,6 +1,6 @@
 var express=require('express');
 var app=express();
-var useragent=require('express-useragent'); 
+var useragent=require('useragent'); 
 
 app.get('/',function(req,res){
   var agent = useragent.parse(req.headers['user-agent']);
@@ -14,9 +14,7 @@ res.json({
     ipaddress: ip,
     language: lang,
     software: agent.os.family
-   
-    
-});
+   });
 });
 
 

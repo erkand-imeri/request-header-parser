@@ -4,11 +4,13 @@ var app=express();
 app.get('/',function(req,res){
 
 var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+var isWin = /^win/.test(process.platform);
 
 
 
 res.json({
-    ipaddress: ip
+    ipaddress: ip,
+    software: isWin
 });
 });
 

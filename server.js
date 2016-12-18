@@ -1,6 +1,6 @@
 var express=require('express');
 var app=express();
-var useragent=require('useragent'); 
+var useragent=require('express-useragent'); 
 
 app.get('/',function(req,res){
   var agent = useragent.parse(req.headers['user-agent']);
